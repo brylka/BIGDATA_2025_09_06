@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OCR za pomocą ChatGPT</title>
+</head>
+<body>
+    <h1>OCR za pomocą ChatGPT</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Wyślij</button>
+    </form>
+
+    {% if ocr_text %}
+        {{ ocr_text }}
+    {% endif %}
+</body>
+</html>
