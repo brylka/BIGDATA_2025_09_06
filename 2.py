@@ -28,7 +28,7 @@ def hello_world():
         messages.append({"role": "assistant", "content": assistant_response})
         #print(assistant_response)
 
-    return render_template('index.html', message=assistant_response, messages_json=json.dumps(messages))
+    return render_template('index.html', messages=messages, messages_json=json.dumps(messages))
 
 
 if __name__ == '__main__':

@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Moja strona</title>
+    <style>
+        .m1 {background-color: rgba(255, 0, 0, 0.5)
+        }
+        .m2 {background-color: rgba(0, 0, 255, 0.5)
+        }
+    </style>
 </head>
 <body>
     <h1>Mój asystent</h1>
-    <p>{{ message }}</p>
-
+    {% if messages %}
+        <a href="/">Wyczyść rozmowę!</a>
+    {% endif %}
+    {% for message in messages %}
+        {% if message.role == 'user' %}
+            <p class="m1">{{ message.content }}</p>
+        {% else %}
+            <p class="m2">{{ message.content }}</p>
+        {% endif %}
+    {% endfor %}
     <form method="POST">
         <input type="hidden" name="messages" value="{{ messages_json }}">
         <input type="text" name="prompt" placeholder="Wpisz prompta...">
