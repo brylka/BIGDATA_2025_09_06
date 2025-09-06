@@ -25,6 +25,11 @@
     <form method="POST">
         <input type="hidden" name="messages" value="{{ messages_json }}">
         <input type="text" name="prompt" placeholder="Wpisz prompta...">
+        <select name="model">
+        {% for model in models %}
+            <option value="{{ model }}">{{ model }}</option>
+        {% endfor %}
+        </select>
         <button type="submit">Wyślij</button>
     </form>
 </body>

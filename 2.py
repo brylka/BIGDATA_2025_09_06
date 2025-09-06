@@ -28,20 +28,23 @@ def hello_world():
 
     if request.method == 'POST':
         user_prompt = request.form.get('prompt')
+        model = request.form.get('model')
         messages = json.loads(request.form.get('messages'))
         messages.append({"role": "user", "content": user_prompt})
 
         mes = [{"role": "developer", "content": preprompt}]
         mes.extend(messages)
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model,
             messages=mes
         )
         assistant_response = response.choices[0].message.content
         messages.append({"role": "assistant", "content": assistant_response})
         #print(assistant_response)
 
-    return render_template('index.html', messages=messages, messages_json=json.dumps(messages))
+    models = ['gpt-4o-mini', 'gpt-4.1-nano', 'gpt-5-nano', 'gpt-5']
+
+    return render_template('index.html', messages=messages, messages_json=json.dumps(messages), models=models)
 
 
 if __name__ == '__main__':
