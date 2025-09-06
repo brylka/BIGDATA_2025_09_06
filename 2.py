@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, render_template, request
 from openai import OpenAI
 
@@ -11,10 +13,11 @@ client = OpenAI(api_key=get_api_key())
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
     messages = []
+    assistant_response = ''
 
     if request.method == 'POST':
         user_prompt = request.form.get('prompt')
-        #print(f"Odebrałem: {user_prompt}")
+        messages = json.loads(request.form.get('messages'))
         messages.append({"role": "user", "content": user_prompt})
 
         response = client.chat.completions.create(
@@ -22,9 +25,10 @@ def hello_world():
             messages=messages
         )
         assistant_response = response.choices[0].message.content
-        print(assistant_response)
+        messages.append({"role": "assistant", "content": assistant_response})
+        #print(assistant_response)
 
-    return render_template('index.html')
+    return render_template('index.html', message=assistant_response, messages_json=json.dumps(messages))
 
 
 if __name__ == '__main__':

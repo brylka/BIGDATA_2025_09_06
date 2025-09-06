@@ -6,10 +6,10 @@
 </head>
 <body>
     <h1>Mój asystent</h1>
-    <p>Tu będzie rozmowa</p>
+    <p>{{ message }}</p>
 
     <form method="POST">
-        <input type="hidden" name="klucz_ukryty" value="wartość_ukryta">
+        <input type="hidden" name="messages" value="{{ messages_json }}">
         <input type="text" name="prompt" placeholder="Wpisz prompta...">
         <button type="submit">Wyślij</button>
     </form>
