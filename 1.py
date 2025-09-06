@@ -12,11 +12,13 @@ while True:
     user_prompt = input("Prompt: ")
     messages.append({"role": "user", "content": user_prompt})
 
-
     response = client.chat.completions.create(
         model = "gpt-4o-mini",
         messages = messages
-        #input = user_prompt
     )
+    assistant_response = response.choices[0].message.content
+    print(assistant_response)
+    messages.append({"role": "assistant", "content": assistant_response})
 
-    print(response)
+    print(20*"=")
+    #print(response)
