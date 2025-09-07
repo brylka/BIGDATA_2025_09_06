@@ -11,5 +11,10 @@
         <input type="file" name="image" accept="image/*">
         <button type="submit">Rozpoznaj</button>
     </form>
+
+    {% if prediction %}
+        <p>Rozpoznana cyfra to: {{ prediction }}</p>
+    {% endif %}
+
 </body>
 </html>
