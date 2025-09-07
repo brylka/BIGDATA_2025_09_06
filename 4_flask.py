@@ -4,11 +4,11 @@ from flask import Flask, render_template, request
 from PIL import Image
 
 app = Flask(__name__)
-model = joblib.load('mnist_model.pkl')
+model = joblib.load('mnist_model_.pkl')
 
 @app.route('/', methods=['GET', 'POST'])
 def digit():
-    prediction = ''
+    prediction = None
     if request.method == 'POST':
         file = request.files['image']
 
@@ -35,7 +35,7 @@ def digit():
 
         prediction = model.predict(img_vector)[0]
 
-    return render_template("digit.html", prediction=prediction)
+    return render_template("digit.html", prediction=str(prediction))
 
 
 if __name__ == '__main__':

@@ -12,7 +12,7 @@
         <button type="submit">Rozpoznaj</button>
     </form>
 
-    {% if prediction %}
+    {% if prediction != None %}
         <p>Rozpoznana cyfra to: {{ prediction }}</p>
     {% endif %}
 
