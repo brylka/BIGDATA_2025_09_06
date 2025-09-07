@@ -32,5 +32,3 @@ preducted_price = model.predict(scaled_new_property)
 
 # Wyświetlenie ceny prognozowanej
 print(f"Prognozowana cena nieruchomości: {(preducted_price[0][0]*(10**5)):.2f} USD)")
-
-# 378630.84
