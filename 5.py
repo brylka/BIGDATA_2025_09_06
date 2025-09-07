@@ -38,7 +38,7 @@ model.compile(optimizer='Adam', loss="mean_squared_error")
 model.summary()
 
 # Trenowanie modelu z 100 epokami i walidacją na 10% danych treningowych
-history = model.fit(X_train, y_train, epochs=100, validation_split=0.1)
+history = model.fit(X_train, y_train, epochs=200, validation_split=0.1)
 
 # Utworzenie wykresu straty dla danych treningowych i walidacyjnych
 plt.figure(figsize=(10, 6))
