@@ -49,6 +49,7 @@ def hello_world():
 
 @app.route('/ocr', methods=['GET', 'POST'])
 def ocr():
+    assistant_response = ''
     if request.method == 'POST':
         file = request.files['image']
         #file.save('plik_otrzymany.png')
